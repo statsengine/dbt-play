@@ -6,7 +6,7 @@ version: "1.0.0"
 config-version: 2
 
 # This setting configures which "profile" dbt uses for this project.
-profile: "stacktonic_example_project"
+profile: "dbt_play"
 
 # These configurations specify where dbt should look for different types of files.
 source-paths: ["models"]
@@ -33,19 +33,13 @@ vars:
 
 # Model config
 models:
-    stacktonic_example_project:
+    dbt_play:
         marts:
             core:
                 materialized: table
                 +dataset: core
                 +tags:
                     - "core"
-                    - "daily"
-            marketing:
-                materialized: table
-                +dataset: marketing
-                +tags:
-                    - "marketing"
                     - "daily"
         staging:
             google_analytics:

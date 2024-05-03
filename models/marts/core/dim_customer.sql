@@ -8,7 +8,7 @@ with users as (
 
   select 
     * 
-  from {{ ref('int_sessions_customer__grouped') }}
+  from {{ ref('int_users_visiting_dates') }}
 
 ),
 
