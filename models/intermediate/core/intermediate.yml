@@ -5,3 +5,5 @@ models:
     description: "All users and their visiting dates."
   - name: int_all_events
     description: "All data events."
+  - name: int_traffic
+    description: "All traffic data."
