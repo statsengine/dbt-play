@@ -34,17 +34,27 @@ vars:
 # Model config
 models:
     dbt_play:
+
+        staging:
+            core:
+                materialized: view
+                +dataset: staging
+                +tags:
+                    - "staging"
+                    - "daily"
+
+        intermediates:
+            core:
+              materialized: view
+              +dataset: intermediate
+              +tags:
+                  - "intermediate"
+                  - "daily"
+
         marts:
             core:
                 materialized: table
                 +dataset: core
                 +tags:
                     - "core"
-                    - "daily"
-        staging:
-            google_analytics:
-                materialized: view
-                +dataset: staging
-                +tags:
-                    - "staging"
                     - "daily"

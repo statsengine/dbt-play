@@ -3,3 +3,5 @@ version: 2
 models:
   - name: stg_google_analytics_events
     description: "This tables stages the Google Analytics 4 raw event data source."
+  - name: stg_google_analytics_traffic
+    description: "This table stages the Google Analytics 4 traffic related events."

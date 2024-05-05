@@ -1,4 +1,3 @@
-
 {{
     config(
         dataset = 'int',
@@ -11,7 +10,7 @@ with sessions as (
 
     select
 
-        user_id,
+        user_pseudo_id,
         event_date,
     
     from {{ ref('stg_google_analytics_events') }}
