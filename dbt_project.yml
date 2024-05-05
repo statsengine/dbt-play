@@ -43,7 +43,7 @@ models:
                     - "staging"
                     - "daily"
 
-        intermediates:
+        intermediate:
             core:
               materialized: view
               +dataset: intermediate

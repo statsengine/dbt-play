@@ -1,6 +1,5 @@
 {{
     config(
-        dataset = 'int',
         materialized = 'view'
     )
 }}
