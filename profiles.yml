@@ -1,0 +1,22 @@
+dbt_play:
+  target: dev  # Default target can be set to dev or prod
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth  # Other methods include service-account, oauth-secrets, etc.
+      project: dbt-playground-421906
+      dataset: dev_dataset  # Development dataset
+      threads: 1
+      timeout_seconds: 300
+      location: EU  # Specify the location if needed
+      priority: interactive
+
+    prod:
+      type: bigquery
+      method: oauth
+      project: dbt-playground-421906
+      dataset: prod_dataset  # Production dataset
+      threads: 4
+      timeout_seconds: 300
+      location: EU
+      priority: interactive

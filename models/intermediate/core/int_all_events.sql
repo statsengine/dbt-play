@@ -1,12 +1,6 @@
-{{
-    config (
-        materialized = 'view'
-    )
-}}
+{{ config(materialized="view") }}
 
-with sessions as (
+with sessions as (select * from {{ ref("stg_google_analytics_events") }})
 
-    select * from {{ ref('stg_google_analytics_events') }}
-)
-
-select * from sessions
+select *
+from sessions

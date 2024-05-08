@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: int_all_events
+    description: "Logs all user actions and interactions within the platform for analysis."
+  - name: int_traffic
+    description: "Captures all traffic data, detailing user flows and site usage metrics."
+  - name: int_orders
+    description: "Stores details of all user orders, including purchase data and transaction history."
+  - name: int_items
+    description: "Contains information on all items, including descriptions, categories, and availability."

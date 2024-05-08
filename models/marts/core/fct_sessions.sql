@@ -1,12 +1,6 @@
-{{
-    config (
-        materialized = 'table'
-    )
-}}
+{{ config(materialized="table") }}
 
-with sessions as (
+with sessions as (select * from {{ ref("int_all_events") }})
 
-    select * from {{ ref('int_all_events') }}
-)
-
-select * from sessions
+select *
+from sessions
