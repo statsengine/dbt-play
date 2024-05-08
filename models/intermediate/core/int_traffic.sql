@@ -1,9 +1,21 @@
-{{ config(materialized="view") }}
+{{ config(materialized="table") }}
 
 with
     sessions as (
 
         select
+
+            ROW_NUMBER() OVER (ORDER BY 
+                device_category,
+                mobile_brand_name,
+                operating_system,
+                language,
+                traffic_medium,
+                traffic_name,
+                traffic_source,
+                country,
+                city
+            ) AS session_id,
 
             count(user_pseudo_id) as n_users,
             count(event_name) as n_events,

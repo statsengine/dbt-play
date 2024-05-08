@@ -1,0 +1,88 @@
+version: 2
+
+models:
+  - name: dim_device
+    description: "This table contains a unique list of devices with details about the category, brand, and operating system."
+    columns:
+      - name: device_id
+        description: "The unique identifier for each device combination"
+        tests:
+          - unique
+          - not_null
+      - name: device_category
+        description: "The category of the device (e.g., mobile, desktop)"
+      - name: mobile_brand_name
+        description: "The brand name of the mobile device"
+      - name: operating_system
+        description: "The operating system running on the device"
+    tags:
+      - dimension
+      - device
+    config:
+      materialized: 'table'
+      cluster_by:
+        - device_category
+        - mobile_brand_name
+        - operating_system
+  
+  - name: dim_locale
+    description: "This table contains locale information like language and country."
+    columns:
+      - name: locale_id
+        description: "The unique identifier for each locale combination."
+      - name: country
+        description: "The country."
+      - name: langauge
+        description: "The language."
+      - name: city
+        description: "The city"
+    tags:
+      - dimension
+      - locale
+    config:
+      materialized: 'table'
+      cluster_by:
+        - locale_id
+        - country
+        - city
+    
+  - name: dim_traffic
+    description: "This table contains traffic information like host and source."
+    columns:
+      - name: traffic_id
+        description: "The unique identifier for each traffic combination."
+      - name: traffic_medium
+        description: "The medium."
+      - name: traffic_source
+        description: "The source."
+      - name: traffic_name
+        description: "The name"
+    tags:
+      - dimension
+      - traffic
+    config:
+      materialized: 'table'
+      cluster_by:
+        - traffic_medium
+        - traffic_source
+        - traffic_name
+
+
+  - name: fct_usage
+    description: "A fact table capturing events from various traffic sources."
+    columns:
+      - name: device_id
+        description: "Foreign key to the device dimension table"
+      - name: locale_id
+        description: "Foreign key to the locale dimension table"
+      - name: traffic_id
+        description: "Foreign key to the traffic dimension table"
+      - name: n_users
+        description: "Number of users participating in the event"
+      - name: n_events
+        description: "Number of events recorded"
+      - name: n_events_strings
+        description: "Number of event strings recorded"
+    tags:
+      - fact
+      - usage

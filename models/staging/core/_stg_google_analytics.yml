@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: stg_google_analytics_events
+    description: "This tables stages the Google Analytics 4 raw event data source."
+    columns:
+      - name: user_pseudo_id
+        description: "A unique identifier for each user."
+        tests:
+          - not_null
+
+  - name: stg_google_analytics_traffic 
+    description: "This view aggregates event data from Google Analytics, including user details and event metrics."
+    columns:
+      - name: user_pseudo_id
+        description: "The pseudonymized identifier of a user, unique per user."
+      - name: event_name
+        description: "The name of the event being recorded."
+      - name: event_string_value
+        description: "String value associated with the event, providing additional context."
+      - name: device_category
+        description: "The category of the device (e.g., mobile, desktop, tablet) used to access the service."
+      - name: mobile_brand_name
+        description: "The brand name of the mobile device, if applicable."
+      - name: operating_system
+        description: "The operating system running on the user's device."
+      - name: language
+        description: "The language setting of the user's device."
+      - name: traffic_medium
+        description: "The medium through which the traffic originates, such as organic, CPC, referral, etc."
+      - name: traffic_name
+        description: "A descriptive name given to the traffic source."
+      - name: traffic_source
+        description: "The origin source of the traffic, typically the website or other source that sent the traffic."
+      - name: country
+        description: "The country from which the user's session originated."
+      - name: city
+        description: "The city from which the user's session originated."
+
