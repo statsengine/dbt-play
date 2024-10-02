@@ -12,9 +12,9 @@ profile: "dbt_play"
 source-paths: ["models"]
 analysis-paths: ["analysis"]
 test-paths: ["tests"]
-data-paths: ["data"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
+seed-paths: ["seeds"]
 
 target-path: "target"  # directory which will store compiled SQL files
 clean-targets:         # directories to be removed by `dbt clean`
@@ -34,27 +34,21 @@ vars:
 # Model config
 models:
     dbt_play:
-
-        staging:
-            core:
-                materialized: view
-                +dataset: staging
-                +tags:
-                    - "staging"
-                    - "daily"
-
-        intermediate:
-            core:
-              materialized: view
-              +dataset: intermediate
-              +tags:
-                  - "intermediate"
-                  - "daily"
-
         marts:
-            core:
-                materialized: table
-                +dataset: core
-                +tags:
-                    - "core"
-                    - "daily"
+            materialized: table
+            +dataset: "marts"
+            +tags:
+                - "core"
+                - "daily"
+        intermediate:
+            materialized: table
+            +dataset: intermediate
+            +tags:
+                - "intermediate"
+                - "daily"
+        staging:
+            materialized: view
+            +dataset: staging
+            +tags:
+                - "staging"
+                - "daily"
