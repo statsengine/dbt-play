@@ -1,0 +1,76 @@
+models:
+  - name: customers
+    description: Customer metrics aggregated.
+    columns:
+      - name: user_id
+        description: "The unique identifier for a user"
+      - name: user_name
+        description: "The name of the user"
+      - name: email
+        description: "The email address of the user"
+      - name: age
+        description: "The age of the user"
+      - name: sex
+        description: "The sex of the user"
+      - name: address
+        description: "The address of the user"
+      - name: city
+        description: "The city of the user"
+      - name: total_orders
+        description: "The total number of orders placed by the user"
+      - name: total_quantity
+        description: "The total quantity of items ordered by the user"
+      - name: total_base_amount
+        description: "The total base amount of all orders placed by the user"
+      - name: total_discount
+        description: "The total discount amount applied to all orders placed by the user"
+      - name: total_amount_paid
+        description: "The total amount paid by the user after discounts"
+      - name: first_order_date
+        description: "The date of the user's first order"
+      - name: last_order_date
+        description: "The date of the user's most recent order"
+  - name: products
+    description: Product metrics aggregated.
+    columns:
+      - name: product_id
+        description: "The unique identifier for a product"
+      - name: product_category
+        description: "The category of the product"
+      - name: price
+        description: "The price of the product"
+      - name: quantity
+        description: "The total quantity of the product sold"
+      - name: total_base_amount
+        description: "The total base amount for all sales of this product"
+      - name: avg_discount_percentage
+        description: "The average discount percentage applied to this product"
+      - name: total_amount
+        description: "The total amount received from all sales of this product after discounts"
+  - name: orders
+    description: Order metrics aggregated.
+    columns:
+      - name: order_date
+        description: "The date of the order"
+      - name: order_hourly
+        description: "The hourly timestamp of the order"
+      - name: total_orders
+        description: "The total number of orders"
+      - name: total_users
+        description: "The total number of users"
+      - name: total_products
+        description: "The total number of products"
+      - name: avg_quantity
+        description: "The average quantity of products ordered"
+      - name: total_quantity
+        description: "The total quantity of products ordered"
+      - name: avg_base_amount
+        description: "The average base amount per order"
+      - name: total_base_amount
+        description: "The total base amount of all orders"
+      - name: avg_discount_percentage
+        description: "The average discount percentage applied to orders"
+      - name: total_amount
+        description: "The total amount received from all orders after discounts"
+      - name: avg_amount
+        description: "The average amount per order after discounts"

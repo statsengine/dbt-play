@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: ecommerce
+    database: dbt-playground-421906
+    schema: ecommerce
+    tables:
+      - name: ecommerce_orders
+      - name: ecommerce_customers
+      - name: ecommerce_products
+      - name: ecommerce_transactions

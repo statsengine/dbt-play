@@ -1,0 +1,112 @@
+models:
+  - name: stg_orders
+    description: "A staging table for orders"
+    columns:
+      - name: order_id
+        description: "The unique identifier for an order"
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: "The identifier of the user who placed the order"
+        tests:
+          - not_null
+      - name: product_id
+        description: "The identifier of the product ordered"
+        tests:
+          - not_null
+      - name: quantity
+        description: "The number of items ordered"
+        tests:
+          - not_null
+      - name: base_amount
+        description: "The base amount of the order"
+        tests:
+          - not_null
+      - name: discount_percentage
+        description: "The discount percentage of the order"
+      - name: amount
+        description: "The total amount of the order"
+        tests:
+          - not_null
+      - name: order_date
+        description: "The date when the order was placed"
+        tests:
+          - not_null
+      - name: order_timestamp
+        description: "The timestamp when the order was placed"
+        tests:
+          - not_null
+
+  - name: stg_customers
+    description: "A staging table for customers"
+    columns:
+      - name: user_id
+        description: "The unique identifier for a user"
+        tests:
+          - unique
+          - not_null
+      - name: user_name
+        description: "The name of the user"
+        tests:
+          - not_null
+      - name: email
+        description: "The email address of the user"
+        tests:
+          - not_null
+      - name: age
+        description: "The age of the user"
+      - name: sex
+        description: "The sex of the user"
+      - name: address
+        description: "The address of the user"
+      - name: city
+        description: "The city of the user"
+
+  - name: stg_products
+    description: "A staging table for products"
+    columns:
+      - name: product_id
+        description: "The unique identifier for a product"
+        tests:
+          - unique
+          - not_null
+      - name: product_category
+        description: "The name of the product"
+        tests:
+          - not_null
+      - name: price
+        description: "The price of the product"
+        tests:
+          - not_null
+
+  - name: stg_transactions
+    description: "A staging table for transactions"
+    columns:
+      - name: transaction_id
+        description: "The unique identifier for a transaction"
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: "The identifier of the order associated with the transaction"
+        tests:
+          - not_null
+      - name: payment_method
+        description: "The method of payment used"
+        tests:
+          - not_null
+      - name: payment_status
+        description: "The status of the payment"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Success', 'Failure']
+      - name: payment_date
+        description: "The date when the payment was made"
+        tests:
+          - not_null
+      - name: payment_amount
+        description: "The amount of the payment"
+        tests:
+          - not_null

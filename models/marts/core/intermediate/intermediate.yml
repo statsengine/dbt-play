@@ -1,7 +1,0 @@
-version: 2
-
-models:
-  - name: int_users_visiting_dates
-    description: "All users and their visiting dates."
-  - name: int_all_events
-    description: "All data events."
