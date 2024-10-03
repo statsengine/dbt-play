@@ -20,7 +20,6 @@ select
     c.sex,
     c.address,
     c.city,
-    -- Aggregated customer metrics
     cm.total_orders,
     cm.total_quantity,
     cm.total_base_amount,

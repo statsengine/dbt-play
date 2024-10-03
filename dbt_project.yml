@@ -9,7 +9,7 @@ config-version: 2
 profile: "dbt_play"
 
 # These configurations specify where dbt should look for different types of files.
-source-paths: ["models"]
+model-paths: ["models"]
 analysis-paths: ["analysis"]
 test-paths: ["tests"]
 macro-paths: ["macros"]
@@ -36,9 +36,9 @@ models:
     dbt_play:
         marts:
             materialized: table
-            +dataset: "marts"
+            +dataset: marts
             +tags:
-                - "core"
+                - "marts"
                 - "daily"
         intermediate:
             materialized: table
