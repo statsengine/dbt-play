@@ -9,7 +9,7 @@ customer_data as (
         email,
         age,
         sex,
-        address,
+    address,
         city
     from source
 ),
