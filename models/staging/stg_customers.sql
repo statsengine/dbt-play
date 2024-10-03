@@ -9,7 +9,7 @@ customer_data as (
         email,
         age,
         sex,
-            address,
+        address,
         city
     from source
 ),
@@ -24,7 +24,6 @@ city_population_data as (
 select
     cd.*,
     cp.population  -- Add population from the seed
-from customer_data cd
-left join city_population_data cp
-on cd.city = cp.city
-
+from customer_data as cd
+left join city_population_data as cp
+    on cd.city = cp.city
