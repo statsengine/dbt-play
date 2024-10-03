@@ -1,8 +1,50 @@
-# you shouldn't commit these into source control
-# these are the default directory names, adjust/add to fit your needs
+# Python virtual environment
+venv/
+
+# DBT-specific directories
 target/
 dbt_packages/
 logs/
 
-# legacy -- renamed to dbt_packages in v1
-dbt_modules/
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environment variables
+.env
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor-specific files
+.vscode/
+.idea/
+
+# Python distribution / packaging
+*.egg-info/
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Data files (if you don't want to version control them)
+*.csv
+*.xlsx
+*.parquet
+
+.sqlfluff
+.user.yml
+
+# Specific to your project
+output/
+data/
+analysis/
