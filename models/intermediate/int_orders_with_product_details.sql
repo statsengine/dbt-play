@@ -1,4 +1,12 @@
-with orders as (
+with new_orders as (
+   select *
+   from {{ ref('stg_orders') }}
+   {% if is_incremental() %}
+    where order_id not in (select order_id from {{ this }})
+   {% endif %} 
+),
+
+orders as (
     select
         o.order_id,
         o.user_id,
@@ -14,7 +22,7 @@ with orders as (
         p.product_category,
         p.price * o.quantity as total_amount_products,
         o.amount - p.price * o.quantity as discount_products
-    from {{ ref('stg_orders') }} o
+    from new_orders o
     left join {{ ref('stg_products') }} p on o.product_id = p.product_id
 )
 

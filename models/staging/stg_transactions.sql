@@ -8,7 +8,7 @@ renamed as (
         order_id,
         payment_method,
         payment_status,
-        payment_date,
+        FORMAT_DATE('%Y-%m-%d', payment_date) AS payment_date,
         payment_amount
     from source
 )

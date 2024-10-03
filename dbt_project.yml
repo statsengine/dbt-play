@@ -41,11 +41,15 @@ models:
                 - "marts"
                 - "daily"
         intermediate:
-            materialized: table
+            +materialized: incremental
             +dataset: intermediate
             +tags:
                 - "intermediate"
                 - "daily"
+            int_customers_with_order_dates:
+                +unique_key: user_id
+            int_orders_with_product_details:
+                +unique_key: order_id
         staging:
             materialized: view
             +dataset: staging

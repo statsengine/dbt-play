@@ -74,3 +74,16 @@ models:
         description: "The total amount received from all orders after discounts"
       - name: avg_amount
         description: "The average amount per order after discounts"
+  - name: transactions
+    description: Transaction metrics aggregated by payment date and payment method.
+    columns:
+      - name: payment_date
+        description: "The date of the payment"
+      - name: payment_method
+        description: "The method of payment used for the transaction"
+      - name: total_transactions
+        description: "The total number of completed transactions for each payment date and method"
+      - name: total_revenue
+        description: "The total revenue (sum of payment amounts) for completed transactions"
+      - name: avg_transaction_value
+        description: "The average payment amount per completed transaction"
