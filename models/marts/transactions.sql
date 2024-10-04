@@ -1,5 +1,5 @@
 with transactions as (
-    select 
+    select
         transaction_id,
         order_id,
         payment_method,
@@ -15,10 +15,9 @@ aggregated as (
         payment_method,
         count(transaction_id) as total_transactions,
         sum(payment_amount) as total_revenue,
-        avg(payment_amount) as avg_transaction_value,
+        avg(payment_amount) as avg_transaction_value
     from transactions
-    where payment_status = 'Success'
     group by 1, 2
-)   
+)
 
 select * from aggregated

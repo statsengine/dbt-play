@@ -10,6 +10,9 @@ dbt_play:
       timeout_seconds: 300
       location: EU  # Specify the location if needed
       priority: interactive
+      dataproc_region: europe-west1
+      gcs_bucket: dbt-playground-bucket
+      python_dependencies: ["requirements.txt"]
 
     prod:
       type: bigquery
@@ -20,3 +23,6 @@ dbt_play:
       timeout_seconds: 300
       location: EU
       priority: interactive
+      dataproc_region: europe-west1
+      gcs_bucket: dbt-playground-bucket
+      python_dependencies: ["requirements.txt"] 

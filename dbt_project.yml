@@ -56,3 +56,13 @@ models:
             +tags:
                 - "staging"
                 - "daily"
+        
+        python:
+            +materialized: table
+            +dataset: python_models
+            +tags:
+                - "python"
+                - "ml"
+            customer_segmentation:
+                +enabled: true
+            

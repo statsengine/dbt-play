@@ -10,7 +10,8 @@ customer_data as (
         age,
         sex,
         address,
-        city
+        city,
+        format_date("%Y%m%d", registration_date) as registration_date
     from source
 ),
 

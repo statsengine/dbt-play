@@ -4,11 +4,11 @@ with customer_metrics as (
         count(distinct o.order_id) as total_orders,
         sum(o.quantity) as total_quantity,
         sum(o.base_amount) as total_base_amount,
-        sum(o.discount_amount) as total_discount, 
+        sum(o.discount_amount) as total_discount,
         sum(o.amount) as total_amount_paid,
         min(o.order_date) as first_order_date,
         max(o.order_date) as last_order_date
-    from {{ ref('int_orders_with_product_details') }} o
+    from {{ ref('int_orders_with_product_details') }} as o
     group by o.user_id
 )
 
@@ -20,12 +20,12 @@ select
     c.sex,
     c.address,
     c.city,
-    cm.total_orders,
-    cm.total_quantity,
-    cm.total_base_amount,
-    cm.total_discount,
-    cm.total_amount_paid,
     cm.first_order_date,
-    cm.last_order_date
-from {{ ref('int_customers_with_order_dates') }} c
-left join customer_metrics cm on c.user_id = cm.user_id
+    cm.last_order_date,
+    coalesce(cm.total_orders, 0) as total_orders,
+    coalesce(cm.total_quantity, 0) as total_quantity,
+    coalesce(cm.total_base_amount, 0) as total_base_amount,
+    coalesce(cm.total_discount, 0) as total_discount,
+    coalesce(cm.total_amount_paid, 0) as total_amount_paid
+from {{ ref('int_customers_with_order_dates') }} as c
+left join customer_metrics as cm on c.user_id = cm.user_id
