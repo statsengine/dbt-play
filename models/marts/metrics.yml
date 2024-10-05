@@ -58,7 +58,14 @@ semantic_models:
         description: "Sum of total orders"
         agg: sum
         expr: total_orders
-
+      - name: total_quantity
+        description: "Sum of total quantites bought"
+        agg: sum
+        expr: total_quantity
+      - name: total_amount_paid
+        description: "Sum of total amount paid"
+        agg: sum
+        expr: total_amount_paid
 
   - name: time_spine_semantic_model
     model: ref('metricflow_time_spine')  # Directly reference the model name as a string
@@ -99,3 +106,15 @@ metrics:
     label: Orders
     type_params:
       measure: total_orders
+  - name: total_quantity
+    description: Sum of total quantities bought.
+    type: simple
+    label: Total Quantity
+    type_params:
+      measure: total_quantity
+  - name: total_amount_paid
+    description: Sum of total amount paid by customers.
+    type: simple
+    label: Total Amount Paid
+    type_params:
+      measure: total_amount_paid
