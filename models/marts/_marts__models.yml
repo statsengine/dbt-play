@@ -87,3 +87,5 @@ models:
         description: "The total revenue (sum of payment amounts) for completed transactions"
       - name: avg_transaction_value
         description: "The average payment amount per completed transaction"
+  - name: metricflow_time_spine
+    description: A model required for the semantic layers.

@@ -40,6 +40,9 @@ models:
             +tags:
                 - "marts"
                 - "daily"
+            metricflow_time_spine:
+                +materialized: table
+
         intermediate:
             +materialized: incremental
             +dataset: intermediate

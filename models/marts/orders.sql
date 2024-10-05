@@ -1,5 +1,8 @@
 select
-    o.order_date,
+    CAST(o.order_date as DATE) as order_date,
+    DATE_TRUNC(CAST(o.order_date as DATE), week) as order_date_week,
+    DATE_TRUNC(CAST(o.order_date as DATE), month) as order_date_month,
+    DATE_TRUNC(CAST(o.order_date as DATE), quarter) as order_date_quarter,
     COUNT(distinct o.order_id) as total_orders,
     COUNT(distinct o.user_id) as total_users,
     COUNT(distinct o.product_id) as total_products,
@@ -12,4 +15,4 @@ select
     AVG(o.amount) as avg_amount
 
 from {{ ref('int_orders_with_product_details') }} as o
-group by 1
+group by 1, 2, 3, 4
