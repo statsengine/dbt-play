@@ -33,39 +33,41 @@ vars:
 
 # Model config
 models:
-    dbt_play:
-        marts:
-            materialized: table
-            +dataset: marts
-            +tags:
-                - "marts"
-                - "daily"
-            metricflow_time_spine:
-                +materialized: table
+  dbt_play:
+    marts:
+      materialized: table
+      +dataset: marts
+      +tags:
+        - "marts"
+        - "daily"
 
-        intermediate:
-            +materialized: incremental
-            +dataset: intermediate
-            +tags:
-                - "intermediate"
-                - "daily"
-            int_customers_with_order_dates:
-                +unique_key: user_id
-            int_orders_with_product_details:
-                +unique_key: order_id
-        staging:
-            materialized: view
-            +dataset: staging
-            +tags:
-                - "staging"
-                - "daily"
-        
-        python:
-            +materialized: table
-            +dataset: python_models
-            +tags:
-                - "python"
-                - "ml"
-            customer_segmentation:
-                +enabled: true
+    intermediate:
+      +materialized: incremental
+      +dataset: intermediate
+      +tags:
+        - "intermediate"
+        - "daily"
+
+    staging:
+      materialized: view
+      +dataset: staging
+      +tags:
+        - "staging"
+        - "daily"
+
+    python:
+      +materialized: table
+      +dataset: python_models  # This can be irrelevant for local runs
+      +tags:
+        - "python"
+        - "ml"
+      customer_segmentation:
+        +enabled: false
+        +profile: "{{ 'local_python' if target.name == 'local_python' else 'dev' }}"  # Switch to local profile for Python models
+      revenue_forecast:
+        +enabled: false
+        +profile: "{{ 'local_python' if target.name == 'local_python' else 'dev' }}"  # Switch to local profile for Python models
+      product_recommendations:
+        +enabled: false
+        +profile: "{{ 'local_python' if target.name == 'local_python' else 'dev' }}"  # Switch to local profile for Python models
             

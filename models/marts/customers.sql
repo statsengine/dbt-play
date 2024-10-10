@@ -5,7 +5,7 @@ with customer_metrics as (
         sum(o.quantity) as total_quantity,
         sum(o.base_amount) as total_base_amount,
         sum(o.discount_amount) as total_discount,
-        sum(o.amount) as total_amount_paid,
+        sum(o.total_amount) as total_amount_paid,
         min(o.order_date) as first_order_date,
         max(o.order_date) as last_order_date
     from {{ ref('int_orders_with_product_details') }} as o

@@ -1,14 +1,14 @@
 dbt_play:
-  target: dev  # Default target can be set to dev or prod
+  target: dev  # Keep dev for SQL models on BigQuery
   outputs:
     dev:
       type: bigquery
-      method: oauth  # Other methods include service-account, oauth-secrets, etc.
+      method: oauth
       project: dbt-playground-421906
-      dataset: dev_ecommerce  # Development dataset
+      dataset: dev_ecommerce
       threads: 4
       timeout_seconds: 300
-      location: EU  # Specify the location if needed
+      location: EU
       priority: interactive
       dataproc_region: europe-west1
       gcs_bucket: dbt-playground-bucket
@@ -18,11 +18,16 @@ dbt_play:
       type: bigquery
       method: oauth
       project: dbt-playground-421906
-      dataset: prod_ecommerce  # Production dataset
+      dataset: prod_ecommerce
       threads: 4
       timeout_seconds: 300
       location: EU
       priority: interactive
       dataproc_region: europe-west1
       gcs_bucket: dbt-playground-bucket
-      python_dependencies: ["requirements.txt"] 
+      python_dependencies: ["requirements.txt"]
+
+    local_python:
+      type: local  # Indicating a local environment
+      threads: 4  # Number of threads for local execution
+      python_dependencies: ["requirements.txt"]  # For local Python dependencies

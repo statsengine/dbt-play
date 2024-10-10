@@ -25,7 +25,9 @@ models:
           - not_null
       - name: discount_percentage
         description: "The discount percentage of the order"
-      - name: amount
+      - name: discount_amount
+        description: "The discount amount applied to the order"
+      - name: total_amount
         description: "The total amount of the order"
         tests:
           - not_null
@@ -33,8 +35,12 @@ models:
         description: "The date when the order was placed"
         tests:
           - not_null
+      - name: formatted_order_date
+        description: "The formatted date of the order"
       - name: order_timestamp
         description: "The timestamp when the order was placed"
+      - name: order_hourly
+        description: "The hourly timestamp of the order"
 
   - name: stg_customers
     description: "A staging table for customers"
@@ -60,6 +66,18 @@ models:
         description: "The address of the user"
       - name: city
         description: "The city of the user"
+      - name: device_type
+        description: "The type of device used by the user"
+      - name: segment
+        description: "The segment of the user"
+      - name: behavioral_profile
+        description: "The behavioral profile of the user"
+      - name: registration_timestamp
+        description: "The timestamp of user registration"
+      - name: registration_date
+        description: "The registration date of the user"
+      - name: age_group
+        description: "The age group of the user"
 
   - name: stg_products
     description: "A staging table for products"
@@ -70,13 +88,25 @@ models:
           - unique
           - not_null
       - name: product_category
-        description: "The name of the product"
+        description: "The category of the product"
         tests:
           - not_null
       - name: price
         description: "The price of the product"
         tests:
           - not_null
+      - name: brand
+        description: "The brand of the product"
+      - name: color
+        description: "The color of the product"
+      - name: material
+        description: "The material of the product"
+      - name: size
+        description: "The size of the product"
+      - name: style
+        description: "The style of the product"
+      - name: rating
+        description: "The rating of the product"
 
   - name: stg_transactions
     description: "A staging table for transactions"
@@ -99,12 +129,40 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: ['Success', 'Failure']
+              values: ['success', 'failure']
       - name: payment_date
         description: "The date when the payment was made"
         tests:
           - not_null
+      - name: formatted_payment_date
+        description: "The formatted date of the payment"
+      - name: payment_timestamp
+        description: "The timestamp of the payment"
       - name: payment_amount
         description: "The amount of the payment"
         tests:
           - not_null
+
+  - name: stg_interactions
+    description: "A staging table for interactions"
+    columns:
+      - name: user_id
+        description: "The unique identifier for a user"
+        tests:
+          - not_null
+      - name: product_id
+        description: "The unique identifier for a product"
+        tests:
+          - not_null
+      - name: interaction_type
+        description: "The type of interaction (e.g., view, click)"
+        tests:
+          - not_null
+      - name: interaction_timestamp
+        description: "The timestamp when the interaction occurred"
+        tests:
+          - not_null
+      - name: interaction_date
+        description: "The date of the interaction"
+      - name: interaction_hour
+        description: "The hour of the interaction"

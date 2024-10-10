@@ -1,13 +1,21 @@
+{{ config(materialized='view') }}
+
 with source as (
     select * from {{ source('ecommerce', 'ecommerce_products') }}
 ),
 
-renamed as (
+standardized_data as (
     select
         product_id,
-        product_category,
-        price
+        price,
+        size,
+        rating,
+        lower(product_category) as product_category,
+        lower(brand) as brand,
+        lower(color) as color,
+        lower(material) as material,
+        lower(style) as style
     from source
 )
 
-select * from renamed
+select * from standardized_data
